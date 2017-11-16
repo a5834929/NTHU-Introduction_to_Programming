@@ -1,0 +1,35 @@
+# Project: Project1
+# Makefile created by Dev-C++ 5.0.0.9
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = console_draw2.o kb_input2.o Gamemain.o $(RES)
+LINKOBJ  = console_draw2.o kb_input2.o Gamemain.o $(RES)
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW32/lib" -static-libstdc++ -static-libgcc -lwinmm  
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include" 
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include" 
+BIN      = Game.exe
+CXXFLAGS = $(CXXINCS)   -w
+CFLAGS   = $(INCS) -w   -w
+RM       = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before Game.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "Game.exe" $(LIBS)
+
+console_draw2.o: console_draw2.c
+	$(CPP) -c console_draw2.c -o console_draw2.o $(CXXFLAGS)
+
+kb_input2.o: kb_input2.c
+	$(CPP) -c kb_input2.c -o kb_input2.o $(CXXFLAGS)
+
+Gamemain.o: Gamemain.cpp
+	$(CPP) -c Gamemain.cpp -o Gamemain.o $(CXXFLAGS)
